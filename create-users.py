@@ -18,10 +18,12 @@ def main():
     for line in sys.stdin:
 
         #Uses a regular expression to search for lines starting with a comment and stores them.
-        match = re.match("^#",line
+        match = re.match("^#",line)
+        print('Does it match?', match)
 
         #Splits the data fields separated by : and stores them in an array.
         fields = line.strip().split(':')
+        print('Number of fields:', len(fields))
 
         #The IF statement checks to see if the line was a comment or if there are not 5 data fields.
         #If either is true, then it ignores that line and continues on to the next line of the input file.
@@ -44,7 +46,7 @@ def main():
 
         #Command to add the user is commented out for testing the script.
         #If uncommented, the os.system(cmd) statement will attempt to create the user using the command above.
-        #print cmd
+        print('Command to be run: ', cmd)
         #os.system(cmd)
 
         #Informs user that the password is now being set for that username. Helps with transparency and debugging.
@@ -56,9 +58,10 @@ def main():
 
         #Command to set the password for the username is commented out for testing the script.
 	#If uncommented, the os.system(cmd) statement will attempt to set the password using the command above.
-        #print cmd
+        print('Command to be run', cmd)
         #os.system(cmd)
 
+        print('User is in these groups: ', groups)
         for group in groups:
             #The IF statement looks at each group in the groups array to add the user to those groups.
             #If the name of the group is not a dash which indicates no group, then it will add the group.
@@ -66,7 +69,7 @@ def main():
             if group != '-':
                 print("==> Assigning %s to the %s group..." % (username,group))
                 cmd = "/usr/sbin/adduser %s %s" % (username,group)
-                #print cmd
+                print('Command to be run: ', cmd)
                 #os.system(cmd)
 
 if __name__ == '__main__':
